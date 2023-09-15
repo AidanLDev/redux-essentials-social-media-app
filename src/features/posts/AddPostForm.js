@@ -38,6 +38,8 @@ export const AddPostForm = () => {
     </option>
   ))
 
+  const spinner = isLoading ? <Spinner size="30px" /> : null
+
   return (
     <section>
       <h2>Add a New Post</h2>
@@ -63,9 +65,17 @@ export const AddPostForm = () => {
           value={content}
           onChange={onContentChanged}
         />
-        <button type="button" onClick={onSavePostClicked} disabled={!canSave}>
-          Save Post
-        </button>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <button type="button" onClick={onSavePostClicked} disabled={!canSave}>
+            Save Post
+          </button>
+          {spinner}
+        </div>
       </form>
     </section>
   )
